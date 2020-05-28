@@ -132,7 +132,6 @@ class App extends React.Component {
                                     ]
                                 }}
                                 options={{
-                                    defaultFontFamily: "'Ubuntu', sans-serif",
                                     legend: {
                                         display: false,
                                     },
@@ -159,7 +158,9 @@ class App extends React.Component {
                                             ticks: {
                                                 display: true,
                                                 padding: 20,
-                                                fontColor: this.state.fontColor
+                                                fontColor: this.state.fontColor,
+                                                fontFamily: "'Ubuntu', sans-serif",
+                                                fontSize: 14
                                             }
                                         }],
                                         yAxes: [{
@@ -172,6 +173,8 @@ class App extends React.Component {
                                                 display: true,
                                                 padding: 20,
                                                 fontColor: this.state.fontColor,
+                                                fontFamily: "'Ubuntu', sans-serif",
+                                                fontSize: 14,
                                                 callback: function (value, index, values) {
                                                     return value + 'B';
                                                 }
@@ -289,7 +292,9 @@ class App extends React.Component {
                                     ticks: {
                                         display: true,
                                         padding: 20,
-                                        fontColor: this.state.fontColor
+                                        fontColor: this.state.fontColor,
+                                        fontFamily: "'Ubuntu', sans-serif",
+                                        fontSize: 14,
                                     }
                                 }],
                                 yAxes: [{
@@ -302,6 +307,8 @@ class App extends React.Component {
                                         display: true,
                                         padding: 20,
                                         fontColor: this.state.fontColor,
+                                        fontFamily: "'Ubuntu', sans-serif",
+                                        fontSize: 14,
                                         callback: function (value, index, values) {
                                             return value + '%';
                                         }
