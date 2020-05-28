@@ -99,7 +99,7 @@ class App extends React.Component {
                         onClick={this.setDarkTheme}
                         lastupdate={this.state.lastupdate}
                     />
-                    <Divider text='PIB Valor actual' />
+                    <Divider text='datos generales' />
 
                     <Row>
                         <Col sm={12} md={12} lg={8} className="my-4">
