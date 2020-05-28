@@ -132,6 +132,7 @@ class App extends React.Component {
                                     ]
                                 }}
                                 options={{
+                                    defaultFontFamily: "'Ubuntu', sans-serif",
                                     legend: {
                                         display: false,
                                     },
@@ -170,8 +171,11 @@ class App extends React.Component {
                                             ticks: {
                                                 display: true,
                                                 padding: 20,
-                                                fontColor: this.state.fontColor
-                                            }
+                                                fontColor: this.state.fontColor,
+                                                callback: function (value, index, values) {
+                                                    return value + 'B';
+                                                }
+                                            },
                                         }]
                                     }
                                 }}
@@ -242,7 +246,7 @@ class App extends React.Component {
                             />
                         </Col>
                     </Row>
-                    
+
                     <span className="d-block text-center font-weight-bold text-secondary font-size-small">PIB Crecimiento por año (%)</span>
                     <LineChart
                         data={{
@@ -297,7 +301,10 @@ class App extends React.Component {
                                     ticks: {
                                         display: true,
                                         padding: 20,
-                                        fontColor: this.state.fontColor
+                                        fontColor: this.state.fontColor,
+                                        callback: function (value, index, values) {
+                                            return value + '%';
+                                        }
                                     }
                                 }]
                             }
