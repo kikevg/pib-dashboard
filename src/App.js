@@ -240,7 +240,7 @@ class App extends React.Component {
 
                     <Row className="text-center py-4">
                         <Col sm={12} md={6} lg={3}>
-                            <Card className="border-0">
+                            <Card className="border-0 my-2">
                                 <Card.Body>
                                     <Activity
                                         activity={this.state.activities[0]}
@@ -249,7 +249,7 @@ class App extends React.Component {
                             </Card>
                         </Col>
                         <Col sm={12} md={6} lg={3}>
-                            <Card className="border-0">
+                            <Card className="border-0 my-2">
                                 <Card.Body>
                                     <Activity
                                         activity={this.state.activities[1]}
@@ -258,7 +258,7 @@ class App extends React.Component {
                             </Card>
                         </Col>
                         <Col sm={12} md={6} lg={3}>
-                            <Card className="border-0">
+                            <Card className="border-0 my-2">
                                 <Card.Body>
                                     <Activity
                                         activity={this.state.activities[2]}
@@ -267,7 +267,7 @@ class App extends React.Component {
                             </Card>
                         </Col>
                         <Col sm={12} md={6} lg={3}>
-                            <Card className="border-0">
+                            <Card className="border-0 my-2">
                                 <Card.Body>
                                     <Activity
                                         activity={this.state.activities[3]}
