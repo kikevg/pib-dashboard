@@ -10,7 +10,7 @@ const Activity = (props) => {
         let numb = parseFloat((props.activity.value / 1000000).toFixed(0));
         
         return (
-            <div className="my-5">
+            <div className="py-3">
                 <h4 className="text-primary font-weight-bold">
                     $<CountUp
                         start={0}

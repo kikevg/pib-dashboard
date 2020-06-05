@@ -1,19 +1,19 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 :root {
   /* colors for white theme */
-  --bg-white-color: #ffffff;
-  --white-theme-primary-color: #02040F;
+  --bg-white-color: #fafafa;
+  --white-theme-primary-color: #101010;
   --white-theme-secondary-color: #a2a2a2;
   --white-theme-muted-color: #c4c4c4;
   --white-theme-border-color: #eee;
   /* colors for dark theme */
-  --bg-dark-color: #02040F;
+  /* --bg-dark-color: #02040F; */
+  --bg-dark-color: #101010;
   --dark-theme-primary-color: #fff;
-  --dark-theme-secondary-color: #4D4F57;
-  --dark-theme-muted-color: #272a3b;
-  --dark-theme-border-color: #1f212b;
+  --dark-theme-secondary-color: #555;
+  --dark-theme-muted-color: #323232;
+  --dark-theme-border-color: #323232;
     /* addicional colors */
   --success-color: #55efc4;
   --danger-color: #ff7675;
@@ -21,7 +21,8 @@
 
 body {
     background-color: var(--bg-white-color);
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500 !important;
     margin: 2em 0;
     transition: .5s;
 }
@@ -31,7 +32,7 @@ body {
 }
 
 .font-weight-light {
-    font-weight: 300 !important;
+    font-weight: 400 !important;
 }
 
 .font-weight-bold {
@@ -96,7 +97,8 @@ body {
 }
 
 select {
-    background-color: #f5f5fa !important;
+    background-color: #f2f2f2 !important;
+    border-radius: 0 !important;
     box-shadow: none !important;
     color: var(--bg-dark-color);
 }
@@ -107,6 +109,10 @@ select:focus {
 
 .list-group .list-group-item {
     border-color: var(--white-theme-border-color) !important;
+}
+
+.card {
+    border-radius: 0 !important;
 }
 
 body.bg-dark {
@@ -148,6 +154,10 @@ body.bg-dark select {
 
 body.bg-dark select:focus {
     color: white !important;
+}
+
+body.bg-dark .card {
+    background-color: #212121;
 }
 
 @media screen and (max-width: 920px) {
