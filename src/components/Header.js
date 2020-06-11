@@ -7,7 +7,7 @@ const Header = (props) => {
     return (
         <div className="d-flex align-items-start justify-content-between">
             <div>
-                <span className="font-size-small text-muted text-capitalize">dashboard</span>
+                <span className="font-size-small text-muted text-capitalize">estadísticas</span>
                 <h2 className="font-weight-bold text-primary">PIB Centro America</h2>
             </div>
             <div>

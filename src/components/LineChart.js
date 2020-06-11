@@ -8,7 +8,7 @@ const LineChart = (props) => {
             <Line
                 data={props.data}
                 options={props.options}
-                width={300}
+                width={200}
             />
         </div>
     );

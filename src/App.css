@@ -27,10 +27,6 @@ body {
     transition: .5s;
 }
 
-.container {
-    width: 70% !important;
-}
-
 .font-weight-light {
     font-weight: 400 !important;
 }
@@ -98,7 +94,6 @@ body {
 
 select {
     background-color: #f2f2f2 !important;
-    border-radius: 0 !important;
     box-shadow: none !important;
     color: var(--bg-dark-color);
 }
@@ -112,7 +107,20 @@ select:focus {
 }
 
 .card {
-    border-radius: 0 !important;
+    border-radius: 10px !important;
+}
+
+footer #economy {
+    background-color: #0984e3;
+}
+
+footer #logo {
+    background-color: #fff;
+}
+
+body.bg-dark footer #economy,
+body.bg-dark footer #logo {
+    background-color: transparent;
 }
 
 body.bg-dark {
@@ -167,5 +175,9 @@ body.bg-dark .card {
 
     select.w-50 {
         width: 75% !important;
+    }
+
+    footer #logo img {
+        width: 100%;
     }
 }

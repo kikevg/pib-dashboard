@@ -15,6 +15,8 @@ import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 
+import { faTruckMoving, faDollyFlatbed, faLeaf, faTools } from '@fortawesome/free-solid-svg-icons';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -104,7 +106,7 @@ class App extends React.Component {
 
                     <Row>
                         <Col sm={12} md={12} lg={8} className="my-4">
-                            <Card className="border-0">
+                            <Card className="border-0 shadow-sm">
                                 <Card.Header className="bg-transparent border-0">
                                     <span className="d-block text-center text-secondary font-weight-bold font-size-small">PIB Valor actual ($ USD)</span>
                                 </Card.Header>
@@ -192,7 +194,7 @@ class App extends React.Component {
                             </Card>
                         </Col>
                         <Col sm={12} md={12} lg={4} className="my-4">
-                            <Card className="border-0">
+                            <Card className="border-0 shadow-sm">
                                 <Card.Body className="p-0">
                                     <ListGroup variant="flush">
                                         <ListGroup.Item className="bg-transparent">
@@ -239,117 +241,131 @@ class App extends React.Component {
                     />
 
                     <Row className="text-center py-4">
-                        <Col sm={12} md={6} lg={3}>
-                            <Card className="border-0 my-2">
-                                <Card.Body>
-                                    <Activity
-                                        activity={this.state.activities[0]}
-                                    />
-                                </Card.Body>
-                            </Card>
+
+                        <Col sm={12} md={12} lg={6}>
+                            <Row>
+                                <Col sm={12} md={6} lg={6}>
+                                    <Card className="border-0 my-2 shadow-sm">
+                                        <Card.Body>
+                                            <Activity
+                                                activity={this.state.activities[0]}
+                                                icon={faTools}
+                                                iconColor='#ffeaa7'
+                                            />
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                                <Col sm={12} md={6} lg={6}>
+                                    <Card className="border-0 my-2 shadow-sm">
+                                        <Card.Body>
+                                            <Activity
+                                                activity={this.state.activities[1]}
+                                                icon={faLeaf}
+                                                iconColor='#55efc4'
+                                            />
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                                <Col sm={12} md={6} lg={6}>
+                                    <Card className="border-0 my-2 shadow-sm">
+                                        <Card.Body>
+                                            <Activity
+                                                activity={this.state.activities[2]}
+                                                icon={faTruckMoving}
+                                                iconColor='#a29bfe'
+                                            />
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                                <Col sm={12} md={6} lg={6}>
+                                    <Card className="border-0 my-2 shadow-sm">
+                                        <Card.Body>
+                                            <Activity
+                                                activity={this.state.activities[3]}
+                                                icon={faDollyFlatbed}
+                                                iconColor='#ff7675'
+                                            />
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            </Row>
                         </Col>
-                        <Col sm={12} md={6} lg={3}>
-                            <Card className="border-0 my-2">
+                        <Col sm={12} md={12} lg={6}>
+                            <Card className="border-0 my-2 shadow-sm">
+                                <Card.Header className="bg-transparent border-0">
+                                    <span className="d-block text-center font-weight-bold text-secondary font-size-small">PIB Crecimiento por año (%)</span>
+                                </Card.Header>
                                 <Card.Body>
-                                    <Activity
-                                        activity={this.state.activities[1]}
-                                    />
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={12} md={6} lg={3}>
-                            <Card className="border-0 my-2">
-                                <Card.Body>
-                                    <Activity
-                                        activity={this.state.activities[2]}
-                                    />
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col sm={12} md={6} lg={3}>
-                            <Card className="border-0 my-2">
-                                <Card.Body>
-                                    <Activity
-                                        activity={this.state.activities[3]}
+                                    <LineChart
+                                        data={{
+                                            labels: this.state.labelsLineChart,
+                                            datasets: [
+                                                {
+                                                    fill: true,
+                                                    backgroundColor: 'rgba(129, 236, 236, .1)',
+                                                    borderColor: 'rgba(129, 236, 236, 1)',
+                                                    borderWidth: 2,
+                                                    data: this.state.dataLineChart,
+                                                    pointBorderWidth: 0,
+                                                }
+                                            ]
+                                        }}
+                                        options={{
+                                            legend: {
+                                                display: false,
+                                            },
+                                            tooltips: {
+                                                callbacks: {
+                                                    title: (tooltipItem, data) => {
+                                                        return data['labels'][tooltipItem[0]['index']];
+                                                    },
+                                                    label: (tooltipItem, data) => {
+
+                                                        let num = parseFloat(data['datasets'][0]['data'][tooltipItem['index']]);
+                                                        let str = new Intl.NumberFormat('en-US').format(num);
+                                                        return 'PIB: ' + str + '%';
+
+                                                    },
+                                                }
+                                            },
+                                            scales: {
+                                                xAxes: [{
+                                                    gridLines: {
+                                                        display: false,
+                                                        drawBorder: false,
+                                                    },
+                                                    ticks: {
+                                                        display: true,
+                                                        padding: 20,
+                                                        fontColor: this.state.fontColor,
+                                                        fontFamily: "'Roboto', sans-serif",
+                                                        fontSize: 14,
+                                                    }
+                                                }],
+                                                yAxes: [{
+                                                    gridLines: {
+                                                        display: true,
+                                                        drawBorder: false,
+                                                        color: this.state.lineColor
+                                                    },
+                                                    ticks: {
+                                                        display: true,
+                                                        padding: 20,
+                                                        fontColor: this.state.fontColor,
+                                                        fontFamily: "'Roboto', sans-serif",
+                                                        fontSize: 14,
+                                                        callback: function (value, index, values) {
+                                                            return value + '%';
+                                                        }
+                                                    }
+                                                }]
+                                            }
+                                        }}
                                     />
                                 </Card.Body>
                             </Card>
                         </Col>
                     </Row>
-
-                    <Card className="border-0">
-                        <Card.Header className="bg-transparent border-0">
-                            <span className="d-block text-center font-weight-bold text-secondary font-size-small">PIB Crecimiento por año (%)</span>
-                        </Card.Header>
-                        <Card.Body>
-                            <LineChart
-                                data={{
-                                    labels: this.state.labelsLineChart,
-                                    datasets: [
-                                        {
-                                            fill: true,
-                                            backgroundColor: 'rgba(129, 236, 236, .1)',
-                                            borderColor: 'rgba(129, 236, 236, 1)',
-                                            borderWidth: 2,
-                                            data: this.state.dataLineChart,
-                                            pointBorderWidth: 0,
-                                        }
-                                    ]
-                                }}
-                                options={{
-                                    legend: {
-                                        display: false,
-                                    },
-                                    tooltips: {
-                                        callbacks: {
-                                            title: (tooltipItem, data) => {
-                                                return data['labels'][tooltipItem[0]['index']];
-                                            },
-                                            label: (tooltipItem, data) => {
-
-                                                let num = parseFloat(data['datasets'][0]['data'][tooltipItem['index']]);
-                                                let str = new Intl.NumberFormat('en-US').format(num);
-                                                return 'PIB: ' + str + '%';
-
-                                            },
-                                        }
-                                    },
-                                    scales: {
-                                        xAxes: [{
-                                            gridLines: {
-                                                display: false,
-                                                drawBorder: false,
-                                            },
-                                            ticks: {
-                                                display: true,
-                                                padding: 20,
-                                                fontColor: this.state.fontColor,
-                                                fontFamily: "'Roboto', sans-serif",
-                                                fontSize: 14,
-                                            }
-                                        }],
-                                        yAxes: [{
-                                            gridLines: {
-                                                display: true,
-                                                drawBorder: false,
-                                                color: this.state.lineColor
-                                            },
-                                            ticks: {
-                                                display: true,
-                                                padding: 20,
-                                                fontColor: this.state.fontColor,
-                                                fontFamily: "'Roboto', sans-serif",
-                                                fontSize: 14,
-                                                callback: function (value, index, values) {
-                                                    return value + '%';
-                                                }
-                                            }
-                                        }]
-                                    }
-                                }}
-                            />
-                        </Card.Body>
-                    </Card>
                     <Footer />
                 </Container>
             </div>
